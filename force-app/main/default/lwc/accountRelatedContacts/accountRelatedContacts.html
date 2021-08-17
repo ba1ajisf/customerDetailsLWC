@@ -1,0 +1,23 @@
+<template>
+    <!--
+    <lightning-card title="LWC Record Id Example ">
+        <lightning-datatable data={contacts} columns={columns} key-field="Id">
+        </lightning-datatable>
+    </lightning-card>
+    -->
+    <c-spinner if:true={isLoading} variant="brand" message={loadMessage}></c-spinner>
+    <lightning-card title="Contact Details">
+        <div if:true={error} class="slds-var-p-around_small slds-text-color_error">{error}</div>
+        <c-vk-datatable if:true={showTable}
+            columns={columns} 
+            records={contacts}
+            show-row-number
+            show-checkbox
+            show-pagination
+            place-holder="Search..." 
+            page-size-options={pageSizeOptions}
+            onrowselection={handleRowSelection} 
+            onsave={saveRecords}>
+        </c-vk-datatable>
+    </lightning-card>
+</template>
